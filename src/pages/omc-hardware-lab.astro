@@ -11,33 +11,29 @@ import {
   gpuMetrics,
   storageMetrics,
   relatedSystems
-} from '../../data/hardwareData';
+} from '../../data/hardwareData.ts';
 ---
 
 <Layout title="OMC Hardware Lab">
 
 <main class="lab-container">
 
-  <a href="/LAB/" class="back-link">
+  <a href="/" class="back-link">
     VOLTAR AO KERNEL
   </a>
 
   <header class="lab-header">
-
     <div class="hud-badge">
       OMC HARDWARE LAB // STATUS: ONLINE
     </div>
-
     <h1 class="lab-title">
       Métricas Críticas e Benchmarks
     </h1>
-
     <p class="lab-subtitle">
       Arquitetura computacional, eficiência térmica,
       frame-times e análise estrutural
       de hardware de elite.
     </p>
-
   </header>
 
   <StatusBar
@@ -49,70 +45,57 @@ import {
   />
 
   <section class="dashboard-grid">
-
     <MetricPanel
       title="GPU Analysis"
       items={gpuMetrics}
     />
-
     <MetricPanel
       title="Storage Systems"
       items={storageMetrics}
     />
-
   </section>
 
   <section class="products-section">
-
     <div class="section-title">
       HARDWARE DATABASE
     </div>
-
     <div class="products-grid">
-
       <ProductCard
         title="RTX 5090 Benchmark"
         category="GPU"
         status="LIVE"
       />
-
       <ProductCard
         title="Ryzen 9800X3D Analysis"
         category="CPU"
         status="ONLINE"
       />
-
       <ProductCard
         title="Samsung 990 PRO"
         category="STORAGE"
         status="TRACKING"
       />
-
     </div>
-
   </section>
 
   <RelatedSystems
     systems={relatedSystems}
   />
 
-  <TopologyMap
-    map={`
+  <TopologyMap>
 HARDWARE DIVISION
  ├── GPUs
  ├── CPUs
  ├── Consoles
  ├── Storage
  └── Benchmarks
-`}
-  />
+  </TopologyMap>
 
 </main>
 
 </Layout>
 
 <style>
-
 .lab-container{
   max-width:1200px;
   margin:0 auto;
@@ -174,5 +157,4 @@ HARDWARE DIVISION
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:1.5rem;
 }
-
 </style>
