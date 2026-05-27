@@ -29,3 +29,12 @@ export const relatedSystems = [
   "ENGENHARIA DA CONSCIÊNCIA",
   "IMÓVEL EM VISTA"
 ];
+
+export const hardwareTopology = [
+  "HARDWARE DIVISION",
+  " ├── GPUs",
+  " ├── CPUs",
+  " ├── Consoles",
+  " ├── Storage",
+  " └── Benchmarks"
+];
