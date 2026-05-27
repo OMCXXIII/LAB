@@ -1,147 +1,35 @@
 ---
-interface Props {
-  id: string;
-  title: string;
-  description: string;
-  status: string;
-  href: string;
-}
-
+interface Props { id: string; title: string; description: string; status: string; href: string; }
 const { id, title, description, status, href } = Astro.props;
 ---
-
 <a href={href} class="nexus-card">
-  <div class="nexus-card__glow"></div>
-  
   <div class="card-top">
     <span class="card-id">{id}</span>
-    <span class="card-status online"></span>
+    <span class="card-indicator">● ONLINE</span>
   </div>
-
-  <div class="card-body">
-    <h2>{title}</h2>
-    <p>{description}</p>
+  <div class="card-content">
+    <h2 class="card-title">{title}</h2>
+    <p class="card-description">{description}</p>
   </div>
-
   <div class="card-footer">
-    <span class="status-tag">{status}</span>
-    <span class="enter-link">ENTER &rarr;</span>
+    <span class="card-status">{status}</span>
+    <span class="card-enter">ENTER →</span>
   </div>
 </a>
 
 <style>
-  .nexus-card {
-    position: relative;
-    background: linear-gradient(180deg, rgba(17,24,39,0.85), rgba(10,15,25,0.95));
-    border: 1px solid rgba(255,255,255,0.06);
-    padding: 2.5rem 2rem;
-    min-height: 280px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    text-decoration: none;
-    overflow: hidden;
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+  .nexus-card { 
+    display: flex; flex-direction: column; justify-content: space-between;
+    min-height: 280px; padding: 32px; background: var(--surface-2);
+    border: 1px solid rgba(255,255,255,0.06); text-decoration: none;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
   }
-
-  .nexus-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, rgba(255,255,255,0.03), transparent);
-    pointer-events: none;
-  }
-
-  .nexus-card__glow {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-    height: 1px;
-    background: radial-gradient(circle, rgba(212,175,55,0.5) 0%, transparent 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .nexus-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(212,175,55,0.3);
-    background: linear-gradient(180deg, rgba(20,30,48,0.95), rgba(8,12,20,1));
-  }
-
-  .nexus-card:hover .nexus-card__glow {
-    opacity: 1;
-  }
-
-  .card-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    z-index: 2;
-  }
-
-  .card-id {
-    font-family: monospace;
-    font-size: 0.875rem;
-    color: #6366F1;
-    letter-spacing: 0.1em;
-  }
-
-  .card-status {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-  }
-
-  .card-status.online {
-    background: #22C55E;
-    box-shadow: 0 0 10px #22C55E;
-  }
-
-  .card-body {
-    position: relative;
-    z-index: 2;
-  }
-
-  .card-body h2 {
-    font-size: 1.25rem;
-    color: #F3F4F6;
-    margin: 1.5rem 0 0.75rem 0;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-  }
-
-  .card-body p {
-    font-size: 0.875rem;
-    color: #9CA3AF;
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  .card-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid rgba(255,255,255,0.06);
-    padding-top: 1.25rem;
-    margin-top: 1.5rem;
-    position: relative;
-    z-index: 2;
-  }
-
-  .status-tag {
-    font-size: 0.688rem;
-    letter-spacing: 0.15em;
-    color: #D4AF37;
-    text-transform: uppercase;
-  }
-
-  .enter-link {
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    color: #6366F1;
-    font-weight: 600;
-  }
+  .nexus-card:hover { transform: translateY(-2px); background: var(--surface-3); border-color: var(--accent-gold); }
+  .nexus-card:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 4px; }
+  .card-top, .card-footer { display: flex; justify-content: space-between; align-items: center; }
+  .card-id, .card-indicator, .card-status, .card-enter { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; }
+  .card-title { margin: 0 0 12px 0; font-size: 1.4rem; color: var(--text-primary); }
+  .card-description { margin: 0; line-height: 1.6; color: var(--text-secondary); }
+  .card-status { color: var(--accent-gold); }
+  .card-enter { color: var(--accent-blue); }
 </style>
