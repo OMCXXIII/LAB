@@ -1,6 +1,42 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import NexusCard from '../components/NexusCard.astro';
+
+// STATE SYSTEM: A fonte da verdade para o estado do ecossistema
+const systems = [
+  {
+    id: '01',
+    title: 'OMC Hardware Lab',
+    description: 'Análise de métricas críticas, eficiência de VRAM e benchmarks puros.',
+    status: 'CAPTURA',
+    state: 'ONLINE',
+    href: '/LAB/omc-hardware-lab'
+  },
+  {
+    id: '02',
+    title: 'SBL System',
+    description: 'Engenharia de hábitos, mielinização e redução de latência cognitiva.',
+    status: 'OTIMIZAÇÃO',
+    state: 'ACTIVE',
+    href: '/LAB/sbl-system'
+  },
+  {
+    id: '03',
+    title: 'Engenharia da Consciência',
+    description: 'Modelagem lógica da percepção humana e desconstrução estrutural de ego.',
+    status: 'EXPANSÃO',
+    state: 'EXPANDING',
+    href: '/LAB/engenharia-da-consciencia'
+  },
+  {
+    id: '04',
+    title: 'Imóvel em Vista',
+    description: 'Inteligência de ativos físicos, alavancagem de crédito inteligente e consolidação.',
+    status: 'MATERIALIZAÇÃO',
+    state: 'TRACKING',
+    href: '/LAB/imovel-em-vista'
+  }
+];
 ---
 
 <Layout title="OMC NEXUS // CORE KERNEL">
@@ -8,207 +44,129 @@ import NexusCard from '../components/NexusCard.astro';
     
     <header class="hub-header">
       <div class="system-identification">
-        <span class="blinking-cursor"></span> OMC NEXUS // CORE KERNEL
+        <span class="cursor"></span>
+        OMC NEXUS // CORE KERNEL
       </div>
       <h1 class="hub-title">Reality Architecture Division</h1>
-      <p class="hub-narrative">OMC NEXUS is the central operational kernel for computational performance, cognitive systems, consciousness engineering, and asset materialization.</p>
+      <p class="hub-description">
+        Infraestrutura operacional para performance computacional, 
+        engenharia cognitiva, expansão perceptiva e materialização estratégica.
+      </p>
     </header>
 
-    <div class="status-bar">
+    <section class="system-status">
       <div class="status-label">[ SYSTEM STATUS ]</div>
-      <div class="status-nodes">
-        <span class="node">Hardware Lab <span class="indicator text-success">ONLINE</span></span>
-        <span class="node">SBL System <span class="indicator text-success">ACTIVE</span></span>
-        <span class="node">Consciousness <span class="indicator text-blue">EXPANDING</span></span>
-        <span class="node">Assets Protocol <span class="indicator text-gold">TRACKING</span></span>
+      <div class="status-grid">
+        {systems.map(system => (
+          <div class="status-node">
+            <span class="node-name">{system.title}</span>
+            <span class="node-state">
+              <span class="pulse"></span>
+              {system.state}
+            </span>
+          </div>
+        ))}
       </div>
-    </div>
-
-    <section class="module-grid">
-      <NexusCard 
-        id="01"
-        title="OMC Hardware Lab"
-        description="Arquitetura computacional, eficiência de silício, métricas críticas e análise de hardware de elite."
-        status="CAPTURA"
-        href="/LAB/omc-hardware-lab"
-      />
-      <NexusCard 
-        id="02"
-        title="SBL System"
-        description="Sistema de redução de latência biológica, engenharia de foco e arquitetura de hábitos de alta densidade."
-        status="OTIMIZAÇÃO"
-        href="/LAB/sbl-system"
-      />
-      <NexusCard 
-        id="03"
-        title="Engenharia da Consciência"
-        description="Modelagem lógica de percepção, desconstrução estrutural do ego e sistemas de significado."
-        status="EXPANSÃO"
-        href="/LAB/engenharia-da-consciencia"
-      />
-      <NexusCard 
-        id="04"
-        title="Imóvel em Vista"
-        description="Inteligência estratégica para ativos físicos tangíveis, engenharia de crédito e estabilidade patrimonial."
-        status="MATERIALIZAÇÃO"
-        href="/LAB/imovel-em-vista"
-      />
     </section>
 
-    <div class="system-map-container">
-      <div class="map-title">SYSTEM TOPOLOGY</div>
-      <pre class="ascii-map">
+    <section class="module-grid">
+      {systems.map(system => (
+        <NexusCard
+          id={system.id}
+          title={system.title}
+          description={system.description}
+          status={system.status}
+          href={system.href}
+        />
+      ))}
+    </section>
+
+    <section class="topology-section">
+      <div class="topology-label">[ SYSTEM TOPOLOGY ]</div>
+      <pre class="topology-map">
 KERNEL
- ├── Hardware Lab (Node 01)
- ├── Cognitive Routing (Node 02)
- ├── Consciousness Models (Node 03)
- └── Asset Materialization (Node 04)
+ ├── Hardware Intelligence
+ │    └── Metrics / VRAM / Benchmark Systems
+ │
+ ├── Cognitive Infrastructure
+ │    └── Habit Engineering / Focus / Execution
+ │
+ ├── Consciousness Engineering
+ │    └── Perception / Meaning / Structural Models
+ │
+ └── Asset Materialization
+      └── Credit / Real Estate / Consolidation
       </pre>
-    </div>
+    </section>
 
   </main>
 
-  <footer class="terminal-footer">
-    <div>OMC NEXUS &copy; 2026</div>
-    <div>REALITY ARCHITECTURE DIVISION</div>
+  <footer class="kernel-footer">
+    <span>OMC NEXUS © 2026</span>
+    <span>REALITY ARCHITECTURE DIVISION</span>
   </footer>
 </Layout>
 
 <style>
   .kernel-hub {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 6rem 2rem 2rem 2rem;
-    flex: 1;
-    width: 100%;
-    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 80px; /* Ritmo vertical constante */
   }
 
-  .hub-header {
-    margin-bottom: 4rem;
-  }
-
+  .hub-header { display: flex; flex-direction: column; gap: 24px; }
+  
   .system-identification {
-    font-family: monospace;
-    font-size: 0.75rem;
-    color: var(--accent-gold);
-    letter-spacing: 0.2em;
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    display: flex; align-items: center; gap: 8px;
+    font-family: var(--font-mono); font-size: 0.75rem;
+    letter-spacing: 0.18em; color: var(--accent-gold);
   }
 
-  .blinking-cursor {
-    width: 8px;
-    height: 12px;
-    background-color: var(--accent-gold);
-    animation: blink 1s step-end infinite;
+  .cursor {
+    width: 8px; height: 12px; background: var(--accent-gold);
+    animation: blink 1s steps(1) infinite;
   }
 
-  @keyframes blink {
-    50% { opacity: 0; }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .hub-title { margin: 0; font-size: clamp(2.5rem, 6vw, 4rem); line-height: 0.95; letter-spacing: -0.04em; }
+  .hub-description { max-width: 720px; margin: 0; color: var(--text-secondary); line-height: 1.7; }
+
+  .system-status {
+    padding: 24px; background: var(--surface-2);
+    border: 1px solid rgba(255,255,255,0.05);
   }
 
-  .hub-title {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    margin: 0 0 1rem 0;
+  .status-label, .topology-label {
+    font-family: var(--font-mono); font-size: 0.72rem;
+    letter-spacing: 0.18em; color: var(--text-muted); margin-bottom: 24px;
   }
 
-  .hub-narrative {
-    font-size: 1.125rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-    max-width: 700px;
-    margin: 0;
+  .status-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .status-node { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.82rem; }
+  .node-state { display: flex; align-items: center; gap: 0.5rem; color: var(--accent-gold); }
+
+  .pulse {
+    width: 6px; height: 6px; border-radius: 999px;
+    background: var(--accent-gold); box-shadow: 0 0 8px rgba(212,175,55,0.4);
+    animation: pulse 5s infinite;
   }
 
-  .status-bar {
-    border: 1px solid rgba(255,255,255,0.1);
-    background: rgba(0,0,0,0.4);
-    padding: 1rem 1.5rem;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 2rem;
-    margin-bottom: 4rem;
-    backdrop-filter: blur(4px);
+  @keyframes pulse { 0%,100% { opacity: 0.6; } 50% { opacity: 1; } }
+
+  .module-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+
+  .topology-section { padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.06); }
+  .topology-map { margin: 0; font-family: var(--font-mono); color: var(--accent-blue); line-height: 1.9; overflow-x: auto; }
+
+  .kernel-footer {
+    display: flex; justify-content: space-between; padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted);
   }
 
-  .status-label {
-    font-family: monospace;
-    font-size: 0.813rem;
-    color: var(--text-muted);
-    letter-spacing: 0.1em;
-  }
-
-  .status-nodes {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-  }
-
-  .node {
-    font-family: monospace;
-    font-size: 0.813rem;
-  }
-
-  .indicator {
-    margin-left: 0.5rem;
-    font-weight: 600;
-  }
-
-  .text-success { color: var(--accent-success); }
-  .text-blue { color: var(--accent-blue); }
-  .text-gold { color: var(--accent-gold); }
-
-  .module-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 5rem;
-  }
-
-  .system-map-container {
-    border-top: 1px solid rgba(255,255,255,0.06);
-    padding-top: 2rem;
-  }
-
-  .map-title {
-    font-family: monospace;
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    letter-spacing: 0.2em;
-    margin-bottom: 1rem;
-  }
-
-  .ascii-map {
-    font-family: monospace;
-    color: var(--accent-blue);
-    font-size: 0.875rem;
-    line-height: 1.8;
-    margin: 0;
-    background: transparent;
-  }
-
-  .terminal-footer {
-    border-top: 1px solid rgba(255,255,255,0.06);
-    padding: 1.5rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    font-family: monospace;
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    letter-spacing: 0.1em;
-  }
-
-  @media (max-width: 600px) {
-    .terminal-footer {
-      flex-direction: column;
-      gap: 1rem;
-      text-align: center;
-    }
+  @media (max-width: 900px) {
+    .module-grid, .status-grid { grid-template-columns: 1fr; }
+    .kernel-footer { flex-direction: column; gap: 1rem; }
   }
 </style>
