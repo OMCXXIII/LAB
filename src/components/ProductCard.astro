@@ -1,0 +1,78 @@
+---
+interface Props {
+  title: string;
+  category: string;
+  status: string;
+}
+
+const { title, category, status } = Astro.props;
+---
+
+<div class="product-card">
+
+  <div class="product-top">
+
+    <span class="product-category">
+      {category}
+    </span>
+
+    <span class="product-status">
+      {status}
+    </span>
+
+  </div>
+
+  <h3 class="product-title">
+    {title}
+  </h3>
+
+  <div class="product-footer">
+
+    <span>ENTER →</span>
+
+  </div>
+
+</div>
+
+<style>
+
+.product-card{
+  background:var(--surface-2);
+  border:1px solid rgba(255,255,255,.08);
+  padding:2rem;
+  transition:.3s ease;
+}
+
+.product-card:hover{
+  border-color:var(--accent-gold);
+  transform:translateY(-2px);
+}
+
+.product-top{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:2rem;
+}
+
+.product-category,
+.product-status{
+  font-size:.7rem;
+  font-family:monospace;
+  letter-spacing:.1em;
+}
+
+.product-status{
+  color:var(--accent-blue);
+}
+
+.product-title{
+  font-size:1.3rem;
+  margin:0 0 2rem 0;
+}
+
+.product-footer{
+  color:var(--accent-gold);
+  font-family:monospace;
+}
+
+</style>
