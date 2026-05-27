@@ -1,332 +1,78 @@
 ---
+import Layout from '../../layouts/Layout.astro';
 
-import Layout from '../layouts/Layout.astro';
-
+// DATA LAYER: Expanda este array conforme necessário
+const inventory = [
+  {
+    id: 'HW-001',
+    name: 'Neural Processing Unit',
+    spec: 'VRAM 24GB // ECC Enabled',
+    status: 'OPERATIONAL',
+    link: '#'
+  },
+  {
+    id: 'HW-002',
+    name: 'Cognitive Latency Array',
+    spec: 'Sub-1ms Response // Optic',
+    status: 'CALIBRATING',
+    link: '#'
+  },
+  // Adicione novos itens aqui...
+];
 ---
 
-
-
-<Layout title="OMC Hardware Lab // Análise de Performance">
-
-  <main class="lab-container">
-
+<Layout title="OMC Hardware Lab // Inventory">
+  <main class="lab-hub">
+    
     <header class="lab-header">
-
-      <a href="/LAB/" class="back-link">VOLTAR AO KERNEL</a>
-
-      <div class="hud-badge">OMC HARDWARE LAB // STATUS: ONLINE</div>
-
-      <h1 class="lab-title">Métricas Críticas e Benchmarks</h1>
-
-      <p class="lab-subtitle">Análise pura de performance, eficiência de VRAM, frame-times e TDP de componentes de alta performance.</p>
-
+      <div class="breadcrumb">[ SYSTEM // HARDWARE_LAB ]</div>
+      <h1>CORE ASSETS</h1>
+      <p>Repositório de infraestrutura física e benchmarks de performance.</p>
     </header>
 
-
-
-    <section class="dashboard-grid">
-
-      <!-- Painel de GPU -->
-
-      <div class="data-panel">
-
-        <div class="panel-header">
-
-          <h2>Análise de GPU</h2>
-
-          <span class="pulse-indicator"></span>
-
-        </div>
-
-        <div class="metrics-list">
-
-          <div class="metric-item">
-
-            <span class="metric-label">RTX 5070 Ti - VRAM Efficiency</span>
-
-            <span class="metric-value">94.2%</span>
-
+    <section class="inventory-grid">
+      {inventory.map(item => (
+        <article class="asset-card">
+          <div class="asset-meta">
+            <span class="asset-id">{item.id}</span>
+            <span class="asset-status">{item.status}</span>
           </div>
-
-          <div class="metric-item">
-
-            <span class="metric-label">RTX 4060 - TDP Max</span>
-
-            <span class="metric-value">115W</span>
-
-          </div>
-
-          <div class="metric-item">
-
-            <span class="metric-label">Frame-time Médio (1% Low)</span>
-
-            <span class="metric-value">12.4ms</span>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-
-      <!-- Painel de Sistemas e Armazenamento -->
-
-      <div class="data-panel">
-
-        <div class="panel-header">
-
-          <h2>Sistemas e Consoles</h2>
-
-          <span class="pulse-indicator"></span>
-
-        </div>
-
-        <div class="metrics-list">
-
-          <div class="metric-item">
-
-            <span class="metric-label">PlayStation 5 - Load Time</span>
-
-            <span class="metric-value">2.1s</span>
-
-          </div>
-
-          <div class="metric-item">
-
-            <span class="metric-label">Samsung 990 Pro - Leitura</span>
-
-            <span class="metric-value">7450 MB/s</span>
-
-          </div>
-
-        </div>
-
-      </div>
-
+          <h2 class="asset-name">{item.name}</h2>
+          <p class="asset-spec">{item.spec}</p>
+          <a href={item.link} class="asset-link">ACCESS DATA →</a>
+        </article>
+      ))}
     </section>
 
   </main>
-
 </Layout>
 
-
-
 <style>
-
-  .lab-container {
-
-    max-width: 1200px;
-
-    margin: 0 auto;
-
-    padding: 4rem 2rem;
-
-  }
-
-  .back-link {
-
-    color: var(--accent-gold);
-
-    text-decoration: none;
-
-    font-size: 0.75rem;
-
-    letter-spacing: 0.1em;
-
-    text-transform: uppercase;
-
-    border: 1px solid var(--accent-gold);
-
-    padding: 0.5rem 1rem;
-
-    display: inline-block;
-
-    margin-bottom: 3rem;
-
-    transition: all 0.3s ease;
-
-    background: transparent;
-
-  }
-
-  .back-link:hover {
-
-    background: rgba(212, 175, 55, 0.1);
-
-  }
-
-  .lab-header {
-
-    margin-bottom: 3rem;
-
-    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-
-    padding-bottom: 2rem;
-
-  }
-
-  .hud-badge {
-
-    font-size: 0.75rem;
-
-    color: var(--accent-blue);
-
-    letter-spacing: 0.2em;
-
-    font-weight: bold;
-
-    margin-bottom: 1rem;
-
-  }
-
-  .lab-title {
-
-    font-size: 2.5rem;
-
-    margin: 0 0 1rem 0;
-
-    color: var(--text-primary);
-
-    font-weight: 700;
-
-  }
-
-  .lab-subtitle {
-
-    color: var(--text-secondary);
-
-    max-width: 600px;
-
-    line-height: 1.6;
-
-    margin: 0;
-
-  }
-
-  .dashboard-grid {
-
+  .lab-hub { display: flex; flex-direction: column; gap: 64px; }
+  
+  .lab-header { border-bottom: 1px solid var(--surface-3); padding-bottom: 32px; }
+  .breadcrumb { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent-gold); letter-spacing: 0.2em; }
+  
+  .inventory-grid {
     display: grid;
-
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-
-    gap: 2rem;
-
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
   }
 
-  .data-panel {
-
-    background: rgba(13, 15, 18, 0.8);
-
-    border: 1px solid #1F2937;
-
-    padding: 2rem;
-
-    backdrop-filter: blur(10px);
-
-  }
-
-  .panel-header {
-
+  .asset-card {
+    padding: 24px;
+    background: var(--surface-2);
+    border: 1px solid rgba(255,255,255,0.05);
     display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    border-bottom: 1px solid #1F2937;
-
-    padding-bottom: 1rem;
-
-    margin-bottom: 1.5rem;
-
-  }
-
-  .panel-header h2 {
-
-    font-size: 1.1rem;
-
-    color: var(--accent-gold);
-
-    margin: 0;
-
-    text-transform: uppercase;
-
-    letter-spacing: 0.1em;
-
-  }
-
-  .pulse-indicator {
-
-    width: 8px;
-
-    height: 8px;
-
-    background-color: var(--accent-blue);
-
-    border-radius: 50%;
-
-    box-shadow: 0 0 8px var(--accent-blue);
-
-    animation: pulse 2s infinite;
-
-  }
-
-  .metrics-list {
-
-    display: flex;
-
     flex-direction: column;
-
-    gap: 1rem;
-
+    gap: 16px;
+    transition: border 0.2s;
   }
 
-  .metric-item {
+  .asset-card:hover { border-color: var(--accent-blue); }
 
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    padding: 0.75rem;
-
-    background: rgba(4, 4, 4, 0.5);
-
-    border-left: 2px solid var(--accent-gold);
-
-  }
-
-  .metric-label {
-
-    font-size: 0.875rem;
-
-    color: var(--text-secondary);
-
-  }
-
-  .metric-value {
-
-    font-size: 1rem;
-
-    color: var(--text-primary);
-
-    font-family: monospace;
-
-    font-weight: bold;
-
-  }
-
-  @keyframes pulse {
-
-    0% { opacity: 1; }
-
-    50% { opacity: 0.4; }
-
-    100% { opacity: 1; }
-
-  }
-
-</style> 
-
+  .asset-meta { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.7rem; }
+  .asset-status { color: var(--accent-gold); }
+  .asset-name { margin: 0; font-size: 1.2rem; }
+  .asset-spec { font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-secondary); }
+  .asset-link { font-family: var(--font-mono); font-size: 0.75rem; color
