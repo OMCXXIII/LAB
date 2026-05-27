@@ -1,0 +1,214 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NexusCard from '../components/NexusCard.astro';
+---
+
+<Layout title="OMC NEXUS // CORE KERNEL">
+  <main class="kernel-hub">
+    
+    <header class="hub-header">
+      <div class="system-identification">
+        <span class="blinking-cursor"></span> OMC NEXUS // CORE KERNEL
+      </div>
+      <h1 class="hub-title">Reality Architecture Division</h1>
+      <p class="hub-narrative">OMC NEXUS is the central operational kernel for computational performance, cognitive systems, consciousness engineering, and asset materialization.</p>
+    </header>
+
+    <div class="status-bar">
+      <div class="status-label">[ SYSTEM STATUS ]</div>
+      <div class="status-nodes">
+        <span class="node">Hardware Lab <span class="indicator text-success">ONLINE</span></span>
+        <span class="node">SBL System <span class="indicator text-success">ACTIVE</span></span>
+        <span class="node">Consciousness <span class="indicator text-blue">EXPANDING</span></span>
+        <span class="node">Assets Protocol <span class="indicator text-gold">TRACKING</span></span>
+      </div>
+    </div>
+
+    <section class="module-grid">
+      <NexusCard 
+        id="01"
+        title="OMC Hardware Lab"
+        description="Arquitetura computacional, eficiência de silício, métricas críticas e análise de hardware de elite."
+        status="CAPTURA"
+        href="/LAB/omc-hardware-lab"
+      />
+      <NexusCard 
+        id="02"
+        title="SBL System"
+        description="Sistema de redução de latência biológica, engenharia de foco e arquitetura de hábitos de alta densidade."
+        status="OTIMIZAÇÃO"
+        href="/LAB/sbl-system"
+      />
+      <NexusCard 
+        id="03"
+        title="Engenharia da Consciência"
+        description="Modelagem lógica de percepção, desconstrução estrutural do ego e sistemas de significado."
+        status="EXPANSÃO"
+        href="/LAB/engenharia-da-consciencia"
+      />
+      <NexusCard 
+        id="04"
+        title="Imóvel em Vista"
+        description="Inteligência estratégica para ativos físicos tangíveis, engenharia de crédito e estabilidade patrimonial."
+        status="MATERIALIZAÇÃO"
+        href="/LAB/imovel-em-vista"
+      />
+    </section>
+
+    <div class="system-map-container">
+      <div class="map-title">SYSTEM TOPOLOGY</div>
+      <pre class="ascii-map">
+KERNEL
+ ├── Hardware Lab (Node 01)
+ ├── Cognitive Routing (Node 02)
+ ├── Consciousness Models (Node 03)
+ └── Asset Materialization (Node 04)
+      </pre>
+    </div>
+
+  </main>
+
+  <footer class="terminal-footer">
+    <div>OMC NEXUS &copy; 2026</div>
+    <div>REALITY ARCHITECTURE DIVISION</div>
+  </footer>
+</Layout>
+
+<style>
+  .kernel-hub {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 6rem 2rem 2rem 2rem;
+    flex: 1;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .hub-header {
+    margin-bottom: 4rem;
+  }
+
+  .system-identification {
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: var(--accent-gold);
+    letter-spacing: 0.2em;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .blinking-cursor {
+    width: 8px;
+    height: 12px;
+    background-color: var(--accent-gold);
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+
+  .hub-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin: 0 0 1rem 0;
+  }
+
+  .hub-narrative {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0;
+  }
+
+  .status-bar {
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(0,0,0,0.4);
+    padding: 1rem 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    backdrop-filter: blur(4px);
+  }
+
+  .status-label {
+    font-family: monospace;
+    font-size: 0.813rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+  }
+
+  .status-nodes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .node {
+    font-family: monospace;
+    font-size: 0.813rem;
+  }
+
+  .indicator {
+    margin-left: 0.5rem;
+    font-weight: 600;
+  }
+
+  .text-success { color: var(--accent-success); }
+  .text-blue { color: var(--accent-blue); }
+  .text-gold { color: var(--accent-gold); }
+
+  .module-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 5rem;
+  }
+
+  .system-map-container {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 2rem;
+  }
+
+  .map-title {
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 0.2em;
+    margin-bottom: 1rem;
+  }
+
+  .ascii-map {
+    font-family: monospace;
+    color: var(--accent-blue);
+    font-size: 0.875rem;
+    line-height: 1.8;
+    margin: 0;
+    background: transparent;
+  }
+
+  .terminal-footer {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+  }
+
+  @media (max-width: 600px) {
+    .terminal-footer {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+    }
+  }
+</style>
