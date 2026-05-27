@@ -1,0 +1,55 @@
+---
+interface Props {
+  systems: string[];
+}
+
+const { systems } = Astro.props;
+---
+
+<section class="related-systems">
+
+  <h2>RELATED SYSTEMS</h2>
+
+  <div class="systems-grid">
+
+    {systems.map((system) => (
+
+      <div class="system-link">
+
+        {system}
+
+      </div>
+
+    ))}
+
+  </div>
+
+</section>
+
+<style>
+
+.related-systems{
+  margin-top:5rem;
+}
+
+.related-systems h2{
+  margin-bottom:2rem;
+  font-size:1rem;
+  letter-spacing:.15em;
+  color:var(--accent-gold);
+}
+
+.systems-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:1rem;
+}
+
+.system-link{
+  border:1px solid rgba(255,255,255,.08);
+  padding:1rem;
+  font-family:monospace;
+  background:rgba(255,255,255,.02);
+}
+
+</style>
