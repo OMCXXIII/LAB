@@ -1,0 +1,42 @@
+---
+interface Props {
+  map: string;
+}
+
+const { map } = Astro.props;
+---
+
+<section class="topology-map">
+
+  <div class="map-title">
+    SYSTEM TOPOLOGY
+  </div>
+
+  <pre class="ascii-map">
+{map}
+  </pre>
+
+</section>
+
+<style>
+
+.topology-map{
+  margin-top:5rem;
+  border-top:1px solid rgba(255,255,255,.08);
+  padding-top:2rem;
+}
+
+.map-title{
+  font-size:.75rem;
+  letter-spacing:.2em;
+  color:var(--text-muted);
+  margin-bottom:1rem;
+}
+
+.ascii-map{
+  color:var(--accent-blue);
+  font-family:monospace;
+  line-height:1.8;
+}
+
+</style>
